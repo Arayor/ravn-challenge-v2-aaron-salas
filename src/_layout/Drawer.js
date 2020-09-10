@@ -1,80 +1,36 @@
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-
-const drawerWidth = 240;
-
+import { useStyles } from "../Theme";
+import IconButton from '@material-ui/core/IconButton';
 const characters = [
     { name: "char 1", detail: " detail 1" },
     { name: "char 2", detail: " detail 2" },
     { name: "char 3", detail: " detail 3" },
 ]
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    drawer: {
-        [theme.breakpoints.up('sm')]: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
-    },
-    appBar: {
-        [theme.breakpoints.up('sm')]: {
-            //  width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-            zIndex: theme.zIndex.drawer + 1,
-        },
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
-            display: 'none',
-        },
-    },
-    // necessary for content to be below app bar
-    toolbar: theme.mixins.toolbar,
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
-}));
-
 function ResponsiveDrawer(props) {
     const classes = useStyles();
     const theme = useTheme();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
 
     const drawer = (
         <div>
-            {!mobileOpen &&
-                <div className={classes.toolbar} />
-            }
-            {/* <Divider /> */}
             <List>
                 {characters.map((e, index) => (
-                    <div>
-                        <ListItem button key={e.name}>
+                    <div key={index}>
+                        <ListItem button >
                             <ListItemText primary={e.name} secondary={e.detail} />
-                            <ChevronRightIcon />
+                            <IconButton edge="end" aria-label="profile">
+                                <ChevronRightIcon />
+                            </IconButton>
                         </ListItem>
                         <Divider />
                     </div>
@@ -85,14 +41,13 @@ function ResponsiveDrawer(props) {
 
     return (
         <div className={classes.root}>
-            <nav className={classes.drawer} aria-label="mailbox folders">
+            <nav className={classes.drawer} aria-label="characters">
                 <Hidden smUp implementation="css">
                     <Drawer
-                        //   container={container}
                         variant="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                        open={mobileOpen}
-                        onClose={handleDrawerToggle}
+                        open={props.mobileOpen}
+                        onClose={props.drawerToggle}
                         classes={{
                             paper: classes.drawerPaper,
                         }}
@@ -104,7 +59,7 @@ function ResponsiveDrawer(props) {
                         {drawer}
                     </Drawer>
                 </Hidden>
-                <Hidden xsDown implementation="css">
+                <Hidden xsDown>
                     <Drawer
                         classes={{
                             paper: classes.drawerPaper,
@@ -145,13 +100,5 @@ function ResponsiveDrawer(props) {
         </div>
     );
 }
-
-ResponsiveDrawer.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-};
 
 export default ResponsiveDrawer;
