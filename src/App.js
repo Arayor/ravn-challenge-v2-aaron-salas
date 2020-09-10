@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import Header from "./_layout/Header";
+// import Drawer from "./_layout/Drawer";
+import Layout from './_layout'
+import Theming from './Theme';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout></Layout>
+      {/* <Header />
+      <Drawer /> */}
     </div>
   );
 }
 
-export default App;
+export default () =>
+  <Theming>
+    <App />
+  </Theming>
