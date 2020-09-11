@@ -5,7 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { useTheme } from '@material-ui/core/styles';
-import { useStyles } from '../Theme';
+import { useStyles } from '../_helpers/Theme';
 
 function Header(props) {
     const theme = useTheme();

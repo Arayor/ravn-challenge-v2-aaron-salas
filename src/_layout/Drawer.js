@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import { useTheme } from '@material-ui/core/styles';
-import { useStyles } from "../Theme";
+import { useStyles } from "../_helpers/Theme";
 import { PersonDetail } from "../_components/PersonDetail";
 import PeopleList from '../_components/PeopleList'
 
@@ -16,7 +16,7 @@ function ResponsiveDrawer(props) {
     return (
         <div className={classes.root}>
             <nav className={classes.drawer} aria-label="characters">
-                <Hidden smUp >
+                <Hidden mdUp >
                     <Drawer
                         variant="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -33,7 +33,7 @@ function ResponsiveDrawer(props) {
                         <PeopleList setSelected={setSelected} drawerToggle={drawerToggle} />
                     </Drawer>
                 </Hidden>
-                <Hidden xsDown>
+                <Hidden smDown>
                     <Drawer
                         classes={{
                             paper: classes.drawerPaper,

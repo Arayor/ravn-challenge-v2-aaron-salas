@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from './_layout'
-import Theming from './Theme';
+import Theming from './_helpers/Theme';
 
 export default function App() {
   return (

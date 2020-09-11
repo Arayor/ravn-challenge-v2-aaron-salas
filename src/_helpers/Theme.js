@@ -44,7 +44,7 @@ const theme = createMuiTheme({
                 color: COLORS.textLight
             },
             root: {
-                paddingRight: 16
+                marginRight: 16
             },
             multiline: {
                 marginTop: 0,
@@ -101,15 +101,15 @@ const theme = createMuiTheme({
 export const useStyles = makeStyles((theme) => ({
     menuButton: {
         marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
-            display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'none !important',
         },
     },
     drawerPaper: {
         width: DRAWER_WIDTH.md,
         top: theme.mixins.toolbar.minHeight,
-        [theme.breakpoints.down('sm')]: {
-            width: DRAWER_WIDTH.sm,
+        [theme.breakpoints.down('md')]: {
+            width: DRAWER_WIDTH.md,
         }
     },
     toolbar: theme.mixins.toolbar,
@@ -120,10 +120,6 @@ export const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(3),
         marginLeft: DRAWER_WIDTH.md,
         [theme.breakpoints.down('sm')]: {
-            marginLeft: DRAWER_WIDTH.sm,
-            padding: CONTENT_PADDING_HORIZONTAL.sm
-        },
-        [theme.breakpoints.down('xs')]: {
             marginLeft: 0,
         }
     },
