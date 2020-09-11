@@ -14,6 +14,11 @@ const DRAWER_WIDTH = {
     md: 350
 }
 
+const CONTENT_PADDING_HORIZONTAL = {
+    sm: 50,
+    md: 100
+}
+
 const defaultTheme = createMuiTheme()
 
 const theme = createMuiTheme({
@@ -58,9 +63,15 @@ const theme = createMuiTheme({
             padding: "32px 16px 8px 16px",
             alignItems: "center",
         },
+        dataCell: {
+            display: "flex",
+            padding: 16,
+            alignItems: "center",
+            justifyContent: "space-between"
+        },
         circularProgress: {
             marginRight: 8
-        }
+        },
     }
 });
 
@@ -83,10 +94,12 @@ export const useStyles = makeStyles((theme) => ({
 
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
+        padding: CONTENT_PADDING_HORIZONTAL.md,
+        paddingTop: theme.spacing(3),
         marginLeft: DRAWER_WIDTH.md,
         [theme.breakpoints.down('sm')]: {
             marginLeft: DRAWER_WIDTH.sm,
+            padding: CONTENT_PADDING_HORIZONTAL.sm
         },
         [theme.breakpoints.down('xs')]: {
             marginLeft: 0,
