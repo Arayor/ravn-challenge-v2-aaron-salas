@@ -19,8 +19,8 @@ query getPeople($cursor: String){
                 }
                 vehicleConnection{
                     vehicles{
-                    id
-                    name
+                      id
+                      name
                     }
                 }
             }

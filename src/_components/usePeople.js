@@ -6,7 +6,7 @@ function usePeople() {
         notifyOnNetworkStatusChange: true,
     });
 
-    if (loading && data == 'undefined') return { loading, people: [] };
+    if (loading && data === 'undefined') return { loading, people: [] };
 
     const loadMore = () => {
         return fetchMore({
@@ -29,7 +29,6 @@ function usePeople() {
             },
         });
     };
-
     return {
         people: data?.allPeople.edges.map(({ node }) => node),
         hasNextPage: data?.allPeople.pageInfo.hasNextPage,
