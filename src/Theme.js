@@ -47,6 +47,14 @@ const theme = createMuiTheme({
         appBar: {
             zIndex: defaultTheme.zIndex.drawer + 1,
         },
+        cell: {
+            display: "flex",
+            padding: 16,
+            alignItems: "center",
+        },
+        circularProgress: {
+            marginRight: 8
+        }
     }
 });
 
@@ -70,7 +78,13 @@ export const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
-        marginLeft: 350
+        marginLeft: DRAWER_WIDTH.md,
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: DRAWER_WIDTH.sm,
+        },
+        [theme.breakpoints.down('xs')]: {
+            marginLeft: 0,
+        }
     },
 })
 )
