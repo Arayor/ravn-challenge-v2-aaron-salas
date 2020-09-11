@@ -47,10 +47,11 @@ const theme = createMuiTheme({
         appBar: {
             zIndex: defaultTheme.zIndex.drawer + 1,
         },
-        cell: {
+        centeredCell: {
             display: "flex",
             padding: 16,
             alignItems: "center",
+            justifyContent: "center"
         },
         circularProgress: {
             marginRight: 8
