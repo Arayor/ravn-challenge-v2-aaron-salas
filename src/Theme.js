@@ -53,6 +53,11 @@ const theme = createMuiTheme({
             alignItems: "center",
             justifyContent: "center"
         },
+        headerCell: {
+            display: "flex",
+            padding: "32px 16px 8px 16px",
+            alignItems: "center",
+        },
         circularProgress: {
             marginRight: 8
         }
