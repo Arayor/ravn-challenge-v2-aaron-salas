@@ -1,5 +1,5 @@
-import { useQuery } from "@apollo/react-hooks";
-import { GET_PEOPLE } from "../_helpers/queries";
+import { useQuery } from '@apollo/react-hooks';
+import { GET_PEOPLE } from '../_helpers/queries';
 
 function usePeople() {
     const { data, loading, error, fetchMore } = useQuery(GET_PEOPLE, {

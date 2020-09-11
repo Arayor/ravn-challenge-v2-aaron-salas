@@ -15,9 +15,9 @@ function Header(props) {
         <AppBar position="absolute" style={theme.custom.appBar}>
             <Toolbar>
                 <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
+                    color='inherit'
+                    aria-label='open drawer'
+                    edge='start'
                     onClick={props.drawerToggle}
                     className={classes.menuButton}
                 >

@@ -1,11 +1,11 @@
-import React from 'react'
-import LoadingCell from "./LoadingCell";
-import NoticeCell from './NoticeCell'
-import PersonCell from "./PersonCell";
-import { FixedSizeList as List } from "react-window";
-import InfiniteLoader from "react-window-infinite-loader";
+import React from 'react';
+import LoadingCell from './LoadingCell';
+import NoticeCell from './NoticeCell';
+import PersonCell from './PersonCell';
+import { FixedSizeList as List } from 'react-window';
+import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import UsePeople from "../_components/usePeople"
+import UsePeople from '../_hooks/usePeople';
 
 export default function PeopleList(props) {
 
@@ -14,7 +14,7 @@ export default function PeopleList(props) {
     const loadMorePersons = loading ? () => { } : loadMore;
     const isPersonLoaded = index => !hasNextPage || index < people.length;
     if (error) {
-        return <NoticeCell message="Failed to Load Data." />
+        return <NoticeCell message='Failed to Load Data.' />
     }
     else
         return (
@@ -36,17 +36,17 @@ export default function PeopleList(props) {
                                 {({ index, style }) => {
                                     let name = people[index]?.name;
                                     let specie = people[index]?.species?.name || 'unknown';
-                                    let homeworld = people[index]?.homeworld?.name || 'unknown'
+                                    let homeworld = people[index]?.homeworld?.name || 'unknown';
                                     return (
-                                        <div key={index} className="InfiniteList-item" style={style}>
+                                        <div key={index} className='nfiniteList-item' style={style}>
 
                                             {isPersonLoaded(index) ?
                                                 <PersonCell
                                                     name={name}
                                                     detail={specie + ' from ' + homeworld}
                                                     onClick={() => {
-                                                        props.setSelected(people[index])
-                                                        props.drawerToggle()
+                                                        props.setSelected(people[index]);
+                                                        props.drawerToggle();
                                                     }}>
                                                 </PersonCell>
                                                 :

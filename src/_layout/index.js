@@ -1,6 +1,6 @@
 import React from 'react';
-import Drawer from "./Drawer";
-import Header from "./Header";
+import Drawer from './Drawer';
+import Header from './Header';
 
 const Layout = props => {
     const [mobileOpen, setMobileOpen] = React.useState(false);

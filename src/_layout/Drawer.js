@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import { useTheme } from '@material-ui/core/styles';
-import { useStyles } from "../_helpers/Theme";
-import { PersonDetail } from "../_components/PersonDetail";
-import PeopleList from '../_components/PeopleList'
+import { useStyles } from '../_helpers/Theme';
+import { PersonDetail } from '../_components/PersonDetail';
+import PeopleList from '../_components/PeopleList';
 
 function ResponsiveDrawer(props) {
     const classes = useStyles();
@@ -15,10 +15,10 @@ function ResponsiveDrawer(props) {
 
     return (
         <div className={classes.root}>
-            <nav className={classes.drawer} aria-label="characters">
+            <nav className={classes.drawer} aria-label='characters'>
                 <Hidden mdUp >
                     <Drawer
-                        variant="temporary"
+                        variant='temporary'
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                         open={props.mobileOpen}
                         onClose={drawerToggle}
@@ -38,7 +38,7 @@ function ResponsiveDrawer(props) {
                         classes={{
                             paper: classes.drawerPaper,
                         }}
-                        variant="permanent"
+                        variant='permanent'
                         open
                     >
                         <PeopleList setSelected={setSelected} drawerToggle={drawerToggle} />

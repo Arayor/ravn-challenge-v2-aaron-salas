@@ -1,47 +1,31 @@
 import React from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-
-const COLORS = {
-    ravnBlack: '#121212',
-    textDark: '#333333',
-    textLight: '#828282',
-    textEmphasis: '#EC5757'
-}
-
-const DRAWER_WIDTH = {
-    sm: 240,
-    md: 350
-}
-
-const CONTENT_PADDING_HORIZONTAL = {
-    sm: 50,
-    md: 100
-}
+import { STYLES } from './constants';
 
 const defaultTheme = createMuiTheme()
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: COLORS.ravnBlack
+            main: STYLES.COLORS.ravnBlack
         },
         secondary: {
-            main: COLORS.textLight
+            main: STYLES.COLORS.textLight
         },
         error: {
-            main: COLORS.textEmphasis
+            main: STYLES.COLORS.textEmphasis
         }
     },
     overrides: {
         MuiListItemText: {
             primary: {
-                fontSize: '17pt',
-                color: COLORS.textDark
+                fontSize: STYLES.FONT_SIZE.header,
+                color: STYLES.COLORS.textDark
             },
             secondary: {
-                fontSize: '14pt',
-                color: COLORS.textLight
+                fontSize: STYLES.FONT_SIZE.p,
+                color: STYLES.COLORS.textLight
             },
             root: {
                 marginRight: 16
@@ -55,41 +39,45 @@ const theme = createMuiTheme({
             gutters: {
                 padding: 16
             },
-
+        },
+        MuiToolbar: {
+            regular: {
+                minHeight: defaultTheme.mixins.toolbar.minHeight + 'px !important',
+                height: defaultTheme.mixins.toolbar.minHeight,
+            }
         }
     },
     custom: {
         header: {
-            fontSize: '17pt',
+            fontSize: STYLES.FONT_SIZE.header,
             fontWeight: '500',
-            lineHeight: '20pt',
             letterSpacing: '0.0125em',
         },
         paragraph: {
-            fontSize: '14pt',
+            fontSize: STYLES.FONT_SIZE.p,
             fontWeight: 'normal',
-            lineHeight: '17pt',
             letterSpacing: '0.0125em',
         },
         appBar: {
             zIndex: defaultTheme.zIndex.drawer + 1,
+            height: defaultTheme.mixins.toolbar.minHeight
         },
         centeredCell: {
-            display: "flex",
+            display: 'flex',
             padding: 16,
-            alignItems: "center",
-            justifyContent: "center"
+            alignItems: 'center',
+            justifyContent: 'center'
         },
         headerCell: {
-            display: "flex",
-            padding: "32px 16px 8px 16px",
-            alignItems: "center",
+            display: 'flex',
+            padding: '32px 16px 8px 16px',
+            alignItems: 'center',
         },
         dataCell: {
-            display: "flex",
+            display: 'flex',
             padding: 16,
-            alignItems: "center",
-            justifyContent: "space-between"
+            alignItems: 'center',
+            justifyContent: 'space-between'
         },
         circularProgress: {
             marginRight: 8
@@ -106,21 +94,22 @@ export const useStyles = makeStyles((theme) => ({
         },
     },
     drawerPaper: {
-        width: DRAWER_WIDTH.md,
+        width: STYLES.DRAWER_WIDTH.md,
         top: theme.mixins.toolbar.minHeight,
         [theme.breakpoints.down('md')]: {
-            width: DRAWER_WIDTH.md,
+            width: STYLES.DRAWER_WIDTH.md,
         }
     },
     toolbar: theme.mixins.toolbar,
 
     content: {
         flexGrow: 1,
-        padding: CONTENT_PADDING_HORIZONTAL.md,
+        padding: STYLES.CONTENT_PADDING_HORIZONTAL.md,
         paddingTop: theme.spacing(3),
-        marginLeft: DRAWER_WIDTH.md,
+        marginLeft: STYLES.DRAWER_WIDTH.md,
         [theme.breakpoints.down('sm')]: {
             marginLeft: 0,
+            padding: STYLES.CONTENT_PADDING_HORIZONTAL.xs,
         }
     },
 })
