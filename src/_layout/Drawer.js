@@ -1,53 +1,27 @@
-
-import React from 'react';
-import Divider from '@material-ui/core/Divider';
+import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 import { useTheme } from '@material-ui/core/styles';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useStyles } from "../Theme";
-import IconButton from '@material-ui/core/IconButton';
-const characters = [
-    { name: "char 1", detail: " detail 1" },
-    { name: "char 2", detail: " detail 2" },
-    { name: "char 3", detail: " detail 3" },
-]
+import { PersonDetail } from "../_components/PersonDetail";
+import PeopleList from '../_components/PeopleList'
 
 function ResponsiveDrawer(props) {
     const classes = useStyles();
     const theme = useTheme();
 
-    const drawer = (
-        <div>
-            <List>
-                {characters.map((e, index) => (
-                    <div key={index}>
-                        <ListItem button >
-                            <ListItemText primary={e.name} secondary={e.detail} />
-                            <IconButton edge="end" aria-label="profile">
-                                <ChevronRightIcon />
-                            </IconButton>
-                        </ListItem>
-                        <Divider />
-                    </div>
-                ))}
-            </List>
-        </div>
-    );
+    const [selected, setSelected] = useState({})
+    const { drawerToggle } = props
 
     return (
         <div className={classes.root}>
             <nav className={classes.drawer} aria-label="characters">
-                <Hidden smUp implementation="css">
+                <Hidden smUp >
                     <Drawer
                         variant="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                         open={props.mobileOpen}
-                        onClose={props.drawerToggle}
+                        onClose={drawerToggle}
                         classes={{
                             paper: classes.drawerPaper,
                         }}
@@ -56,7 +30,7 @@ function ResponsiveDrawer(props) {
                         }}
                         style={theme.custom.drawer}
                     >
-                        {drawer}
+                        <PeopleList setSelected={setSelected} drawerToggle={drawerToggle} />
                     </Drawer>
                 </Hidden>
                 <Hidden xsDown>
@@ -67,37 +41,15 @@ function ResponsiveDrawer(props) {
                         variant="permanent"
                         open
                     >
-                        {drawer}
+                        <PeopleList setSelected={setSelected} drawerToggle={drawerToggle} />
                     </Drawer>
                 </Hidden>
             </nav>
-            {/* <main className={classes.content}>
+            <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-                    gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-                    Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-                    imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-                    arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-                    donec massa sapien faucibus et molestie ac.
-        </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-                    facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-                    tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-                    consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-                    vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-                    hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-                    tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-                    nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-                    accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-            </main> */}
-        </div>
+                <PersonDetail sel={selected} />
+            </main>
+        </div >
     );
 }
 

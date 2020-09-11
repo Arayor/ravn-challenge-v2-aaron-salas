@@ -6,13 +6,13 @@ import Divider from '@material-ui/core/Divider';
 
 const PersonCell = (props) => {
     return (
-        <div /*key={index}*/>
-            <ListItem button >
+        <div >
+            <ListItem button onClick={props.onClick} >
                 <ListItemText primary={props.name} secondary={props.detail} />
-                    <ChevronRightIcon />
+                <ChevronRightIcon />
             </ListItem>
             <Divider />
-        </div>
+        </div >
     )
 }
 
