@@ -33,8 +33,30 @@ const theme = createMuiTheme({
             main: COLORS.textEmphasis
         }
     },
-    typography: {
+    overrides: {
+        MuiListItemText: {
+            primary: {
+                fontSize: '17pt',
+                color: COLORS.textDark
+            },
+            secondary: {
+                fontSize: '14pt',
+                color: COLORS.textLight
+            },
+            root: {
+                paddingRight: 16
+            },
+            multiline: {
+                marginTop: 0,
+                marginBottom: 0
+            }
+        },
+        MuiListItem: {
+            gutters: {
+                padding: 16
+            },
 
+        }
     },
     custom: {
         header: {
